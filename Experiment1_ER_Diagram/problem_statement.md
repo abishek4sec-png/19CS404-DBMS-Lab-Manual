@@ -106,31 +106,36 @@ A popular restaurant wants to manage reservations, orders, and billing.
 - Waiters assigned to serve reservations.
 
 ### ER Diagram:
-*Paste or attach your diagram here*  
-![ER Diagram](er_diagram_restaurant.png)
+<img width="1162" height="672" alt="Screenshot 2026-10-10 091249" src="https://github.com/user-attachments/assets/1b6b8739-9aa5-410f-bcb9-a0acbdec5de2" />
+
 
 ### Entities and Attributes
 
-| Entity | Attributes (PK, FK) | Notes |
-|--------|--------------------|-------|
-|        |                    |       |
-|        |                    |       |
-|        |                    |       |
-|        |                    |       |
-|        |                    |       |
+| Entity      | Attributes (PK, FK)                              | Notes                      |
+| ----------- | ------------------------------------------------ | -------------------------- |
+| Customer    | **Customer_ID (PK)**, Name, Phone                | Stores customer details    |
+| Reservation | **Reservation_ID (PK)**, Date, Time, No_of_Guest | Stores reservation details |
+| Order       | **Order_ID (PK)**, Date, Amount                  | Stores food order details  |
+| Dish        | **Dish_ID (PK)**, Name, Category, Price          | Stores menu information    |
+| Waiter      | **Waiter_ID (PK)**, Name, Contact                | Stores waiter details      |
+
 
 ### Relationships and Constraints
 
-| Relationship | Cardinality | Participation | Notes |
-|--------------|------------|---------------|-------|
-|              |            |               |       |
-|              |            |               |       |
-|              |            |               |       |
+| Relationship                   | Cardinality | Participation | Notes                                                                   |
+| ------------------------------ | ----------- | ------------- | ----------------------------------------------------------------------- |
+| Customer — Makes — Reservation | 1:M         | Total         | One customer can make multiple reservations.                            |
+| Reservation — Has — Order      | 1:M         | Total         | One reservation can include multiple orders.                            |
+| Order — Contains — Dish        | M:N         | Total         | An order can contain many dishes, and a dish can appear in many orders. |
+| Waiter — Serves — Reservation  | 1:M         | Total         | One waiter can serve multiple reservations.                             |
+
 
 ### Assumptions
-- 
-- 
-- 
+Each reservation is assigned to one waiter.
+
+Bills are generated from the total amount of ordered dishes.
+
+A customer may place multiple orders during a reservation.
 
 ---
 
